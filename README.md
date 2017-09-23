@@ -22,5 +22,8 @@ $ ionic cordova platform add ios
 $ ionic cordova run ios
 ```
 
+Inspect Devices
+ofrecido por Juan Carlos De Román
+
 Substitute ios for android if not on a Mac.
 

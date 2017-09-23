@@ -5,13 +5,13 @@
         </ion-item>
         <ion-item>
             <ion-label floating>Usario</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" [(ngModel)]="usuario"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Contrasenia</ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-input type="password" [(ngModel)]="contrasenia"></ion-input>
         </ion-item>
     </ion-list>
-    <button ion-button full>Ingresar</button>
+    <button ion-button full (click)='ingresar();'>Ingresar</button>
 </ion-content>
   
