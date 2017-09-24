@@ -13,13 +13,10 @@ export class UsuarioProvider {
         //console.log(usuario);console.log(contrasenia);
         var headers = new Headers();
         headers.append("Accept", 'application/json');
-        headers.append('Content-Type', 'application/json' );
+        headers.append('Content-Type', 'application/x-www-form-urlencoded' );
         let options = new RequestOptions({ headers: headers });
-        let postParams = {
-            usuario:usuario,
-            contrasenia: contrasenia
-          }
-        var link = 'http://192.168.1.3:3000/usuario/validar';
+        let postParams = {}
+        var link = 'http://192.168.1.3:3000/usuario/validar?usuario=' + usuario + '&contrasenia=' + contrasenia;
         
         return this.http.post(link, postParams, options)
             .subscribe(data => {
