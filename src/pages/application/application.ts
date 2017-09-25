@@ -20,7 +20,6 @@ export class ApplicationPage {
     dashboardRoot = 'DashboardPage'
     notificacionesRoot = 'NotificacionesPage'
 
-
     constructor(public navCtrl: NavController, public platform: Platform) {
         this.platform.ready().then(() => {
           this.platform.registerBackButtonAction(() => {
