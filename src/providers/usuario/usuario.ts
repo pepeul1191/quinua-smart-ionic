@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UsuarioProvider {
+    rpta: any;
     constructor(private http: Http) {
         //console.log('Hello UsuarioProvider Provider');
     }
@@ -16,12 +17,14 @@ export class UsuarioProvider {
         headers.append('Content-Type', 'application/x-www-form-urlencoded' );
         let options = new RequestOptions({ headers: headers });
         let postParams = {}
-        var link = 'http://192.168.1.3:3000/usuario/validar?usuario=' + usuario + '&contrasenia=' + contrasenia;
+        var link = 'http://10.151.76.223:3000/usuario/validar?usuario=' + usuario + '&contrasenia=' + contrasenia;
         
-        return this.http.post(link, postParams, options)
+        this.http.post(link, postParams, options)
             .subscribe(data => {
-                console.log(data);
-            }, error => {
+                //console.log(JSON.parse(data['_body']));
+                this.rpta = JSON.parse(data['_body']);
+            }
+            , error => {
                 console.log("Oooops!");
         });
     }

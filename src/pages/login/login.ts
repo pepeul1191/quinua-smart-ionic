@@ -14,8 +14,9 @@ export class LoginPage {
         
     }
     ingresar() {
-      //console.log('crap');
-      //console.log('usuario' + this.usuario + ' - contraseña' + this.contrasenia);
-      this.usuarioProvider.validar(this.usuario, this.contrasenia);
+        //console.log('crap');
+        //console.log('usuario' + this.usuario + ' - contraseña' + this.contrasenia);
+        this.usuarioProvider.validar(this.usuario, this.contrasenia);
+        console.log(this.usuarioProvider.rpta);
   }
 }
