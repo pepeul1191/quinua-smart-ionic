@@ -9,13 +9,16 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { ApplicationPage } from '../pages/application/application';
+
 import { UsuarioProvider } from '../providers/usuario/usuario';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    ApplicationPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
   entryComponents: [
     MyApp,
     LoginPage,
-    HomePage
+    HomePage,
+    ApplicationPage
   ],
   providers: [
     StatusBar,

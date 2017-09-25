@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
+import { ApplicationPage } from '../../pages/application/application';
 
 @Component({
     selector: 'page-login',
@@ -14,9 +15,15 @@ export class LoginPage {
         
     }
     ingresar() {
-        //console.log('crap');
         //console.log('usuario' + this.usuario + ' - contraseña' + this.contrasenia);
-        this.usuarioProvider.validar(this.usuario, this.contrasenia);
-        console.log(this.usuarioProvider.rpta);
+        try {
+            this.usuarioProvider.validar(this.usuario, this.contrasenia);
+            if (this.usuarioProvider.rpta['existe'] == 'si'){
+                this.navCtrl.push(ApplicationPage);
+            }
+        }
+        catch (e){
+            console.log(e);
+        }
   }
 }

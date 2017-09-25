@@ -26,6 +26,7 @@ export class UsuarioProvider {
             }
             , error => {
                 console.log("Oooops!");
+                this.rpta = JSON.parse('{existe:"no"}');
         });
     }
 }
