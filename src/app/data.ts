@@ -1,0 +1,1 @@
+export var BASE_URL:string = 'http://localhost:3000/';

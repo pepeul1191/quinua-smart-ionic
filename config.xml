@@ -3,7 +3,7 @@
     <name>Quinua Smart App - Ionic</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://10.151.76.223:8100" />
+    <content original-src="index.html" src="http://172.16.28.55:8100" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-intent href="http://*/*" />
@@ -81,7 +81,8 @@
     <allow-navigation href="http://192.168.1.3:8100" />
     <allow-navigation href="http://192.168.1.16:8100" />
     <allow-navigation href="http://10.151.76.223:8100" />
-    <engine name="android" spec="^6.2.3" />
+    <allow-navigation href="http://172.16.28.55:8100" />
+    <engine name="android" spec="6.3.0" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />

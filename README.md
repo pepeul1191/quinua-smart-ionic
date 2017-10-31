@@ -1,29 +1,35 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# Quinua Smart IONIC
 
-## How to use this template
+Configurar el PATH:
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+    $ sudo pluma ~/.bashrc
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+    JAVA_HOME="/usr/lib/jvm/java-8-oracle/"
+    export JAVA_HOME
+    PATH=$PATH:$JAVA_HOME
+    export PATH
 
-### With the Ionic CLI:
+    export ANDROID_HOME=/home/ulima/Android/Sdk
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+    $ . ~/.bashrc
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
-```
+Extensión para debugear con chrome:
 
-Then, to run it, cd into `myBlank` and run:
+    Inspect Devices (ofrecido por Juan Carlos De Román)
+    
+Instalar las dependencias:
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
+    $ npm install
 
-Inspect Devices
-ofrecido por Juan Carlos De Román
+Añadir plataforma Android y IOS
 
-Substitute ios for android if not on a Mac.
+    $ ionic cordova platform add android
+    $ ionic cordova platform add ios
 
+Arrancar aplicación en Android
+
+    $ ionic cordova run android
+
+Generar resources:
+
+    $ ionic cordova resources android
