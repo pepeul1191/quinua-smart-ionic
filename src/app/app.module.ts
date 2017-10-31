@@ -13,6 +13,7 @@ import { LoginPage } from '../pages/login/login';
 import { ApplicationPage } from '../pages/application/application';
 
 import { UsuarioProvider } from '../providers/usuario/usuario';
+import { EstacionProvider } from '../providers/estacion/estacion';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
     SplashScreen,
     SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UsuarioProvider
+    UsuarioProvider,
+    EstacionProvider
   ]
 })
 export class AppModule {}

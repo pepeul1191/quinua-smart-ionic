@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import {BASE_URL} from "../../app/data";
 import { ToastController } from 'ionic-angular';
@@ -28,13 +27,11 @@ export class UsuarioProvider {
                 this.rpta = JSON.parse(data['_body']);
             }
             , error => {
-                console.log("Oooops!");
                 let toast = this.toastCtrl.create({
                     message: 'Ocurrió un error en la comunicación con el servidor',
                     duration: 3000
                 });
                 toast.present();
         });
-        
     }
 }

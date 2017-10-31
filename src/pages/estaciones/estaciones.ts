@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the EstacionesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { EstacionProvider } from '../../providers/estacion/estacion';
 
 @IonicPage()
 @Component({
@@ -15,7 +9,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EstacionesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public estacionProvider: EstacionProvider) {
+    this.onLoad();
+  }
+
+  onLoad() {
+    try {
+        this.estacionProvider.listar();
+        console.log(this.estacionProvider.rpta);
+    }
+    catch (e){
+        console.log(e);
+    }
   }
 
   ionViewDidLoad() {

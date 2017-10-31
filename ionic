@@ -1,0 +1,28 @@
+
+You have been opted out of telemetry. To change this, run: cordova telemetry on.
+Installing "cordova-plugin-googlemaps" for android
+ANDROID_HOME=/home/ulima/Android/Sdk
+JAVA_HOME=/usr/lib/jvm/java-8-oracle/
+Subproject Path: CordovaLib
+Starting a Gradle Daemon (subsequent builds will be faster)
+The Task.leftShift(Closure) method has been deprecated and is scheduled to be removed in Gradle 5.0. Please use Task.doLast(Action) instead.
+	at build_4hxsf4f0zrk1g1a3mf5ocj53l.run(/home/ulima/Documentos/ionic/quinua/platforms/android/build.gradle:141)
+The JavaCompile.setDependencyCacheDir() method has been deprecated and is scheduled to be removed in Gradle 4.0.
+Incremental java compilation is an incubating feature.
+The TaskInputs.source(Object) method has been deprecated and is scheduled to be removed in Gradle 4.0. Please use TaskInputs.file(Object).skipWhenEmpty() instead.
+:clean
+:CordovaLib:clean
+
+BUILD SUCCESSFUL
+
+Total time: 17.924 secs
+Subproject Path: CordovaLib
+
+             In order to run this plugin, you need to obtain Google Maps API key for Android.
+             Visit https://github.com/mapsplugin/cordova-plugin-googlemaps/wiki/Installation
+
+             Check our release notes.
+             https://github.com/mapsplugin/cordova-plugin-googlemaps/wiki/Release-Notes
+        
+Adding cordova-plugin-googlemaps to package.json
+Saved plugin info for "cordova-plugin-googlemaps" to config.xml

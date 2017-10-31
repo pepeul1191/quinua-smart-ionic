@@ -90,4 +90,7 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
     <allow-navigation href="http://192.168.1.197:8101" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.0.11">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyA3F8CQMAE147iISaPf_dQ3tSda2oOoec0" />
+    </plugin>
 </widget>
