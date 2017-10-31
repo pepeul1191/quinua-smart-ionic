@@ -35,5 +35,6 @@ export class UsuarioProvider {
                 });
                 toast.present();
         });
+        
     }
 }

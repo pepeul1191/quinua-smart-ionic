@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 //import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -12,10 +13,28 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   rootPage:any = LoginPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private sqlite: SQLite) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      //INICIO : Database CREATE TABLES IF NOT EXIST
+      this.sqlite.create({
+          name: 'quinua.db',
+          location: 'default'
+      }).then((db: SQLiteObject) => {
+          db.executeSql(
+              'CREATE TABLE IF NOT EXISTS sesiones ' + 
+              '(id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ' + 
+              ' llave VARCHAR(20) NOT NULL, ' + 
+              'valor VARCHAR(20)  NOT NULL' 
+              +')'
+          , {})
+          .then(() => console.log('Executed SQL'))
+          .catch(e => console.log(e));
+      }).catch(
+          e => console.log(e)
+      );
+      //FIN
       statusBar.styleDefault();
       splashScreen.hide();
     });
