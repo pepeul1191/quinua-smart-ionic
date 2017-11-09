@@ -29,6 +29,7 @@ Añadir plataforma Android y IOS
 Arrancar aplicación en Android
 
     $ ionic cordova run android
+    $ ionic cordova emulate android -l -c
 
 Generar resources:
 
