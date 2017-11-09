@@ -8,8 +8,10 @@ import { ToastController } from 'ionic-angular';
 @Injectable()
 export class EstacionProvider {
     rpta: any;
-    constructor(public http: Http, public toastCtrl: ToastController) {
-      console.log('Hello EstacionProvider Provider');
+    http: any;
+    //data: any;
+    constructor(http: Http, public toastCtrl: ToastController) {
+      this.http = http;
     }
     listar() {
       //console.log(usuario);console.log(contrasenia);
@@ -18,11 +20,10 @@ export class EstacionProvider {
       headers.append('Content-Type', 'application/x-www-form-urlencoded' );
       let options = new RequestOptions({ headers: headers });
       let postParams = {};
-      var link = BASE_URL + 'estacion/listar';;
+      var link = BASE_URL + 'estacion/listar';
       
       this.http.get(link, options)
           .subscribe(data => {
-              console.log(JSON.parse(data['_body']));
               this.rpta = JSON.parse(data['_body']);
           }
           , error => {
@@ -31,6 +32,6 @@ export class EstacionProvider {
                   duration: 3000
               });
               toast.present();
-      });
+      })
   }
 }

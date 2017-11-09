@@ -9,8 +9,10 @@ import { ToastController } from 'ionic-angular';
 export class UsuarioProvider {
     rpta: any;
     data: any;
-    constructor(private http: Http, public toastCtrl: ToastController) {
+    http: any;
+    constructor(http: Http, public toastCtrl: ToastController) {
         //console.log('Hello UsuarioProvider Provider');
+        this.http = http;
     }
     validar(usuario, contrasenia) {
         //console.log(usuario);console.log(contrasenia);
