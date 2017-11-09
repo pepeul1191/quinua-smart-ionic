@@ -13,7 +13,7 @@ export class EstacionesPage {
     @ViewChild('map') mapElement: ElementRef;
     map: any;
     estaciones:any;
-    constructor(public navCtrl: NavController, public navParams: NavParams, public estacionProvider: EstacionProvider, public geolocation: Geolocation) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public estacionProvider: EstacionProvider,) {
         //this.ionViewDidEnter();
     }
     ionViewDidLoad() {
@@ -31,18 +31,15 @@ export class EstacionesPage {
         } 
     }
     loadMap() {
-        this.geolocation.getCurrentPosition().then((position) => {
-            let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            let mapOptions = {
-                center: latLng,
-                zoom: 15, 
-                mapTypeId: google.maps.MapTypeId.ROADMAP	
-            }
-            this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-            }, (err) => {
-                console.log(err);	
-            }
-        );
+        let latLng = new google.maps.LatLng(-10.569220973686791, -75.20462410000005);
+ 
+        let mapOptions = {
+            center: latLng,
+            zoom: 5,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+    
+        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
         /*
         this.estaciones.forEach(estacion => {
    
