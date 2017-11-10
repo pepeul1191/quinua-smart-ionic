@@ -1,3 +1,14 @@
 page-home {
     
 }    
+
+ion-icon {
+    &[class*="app-logo"] {
+        // Instead of using the font-based icons
+        // We're applying SVG masks
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        background: currentColor;
+        font-size: 20em;
+    }
+}
