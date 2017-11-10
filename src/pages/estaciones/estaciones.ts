@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EstacionProvider } from '../../providers/estacion/estacion';
+import 'rxjs/add/operator/map';
 declare var google;
 
 @IonicPage()
@@ -42,11 +43,9 @@ export class EstacionesPage {
         
         if(this.estaciones != null){
             this.estaciones.forEach(estacion => {
-                var position = new google.maps.LatLng(estacion.latitud, estacion.latitud);
-                console.log(position);
+                var position = new google.maps.LatLng(estacion.latitud, estacion.longitud);
                 var dogwalkMarker = new google.maps.Marker({position: position, title: estacion.title});
                 dogwalkMarker.setMap(this.map);
-                console.log("dogwalk!!!");
             });
         }
     }
