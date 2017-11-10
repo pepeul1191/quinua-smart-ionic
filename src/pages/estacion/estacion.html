@@ -6,10 +6,17 @@
 <ion-content padding>
   <ion-card>
     <img src="{{ STATIC_URL }}img/Quinoa-Plantation.jpg">
-    <ion-item *ngFor="let sensor of sensores;">
+  </ion-card>
+  <ion-card *ngFor="let sensor of sensores;">
+    <ion-item>
       <ion-icon name="{{ sensor.icon }}" item-start large></ion-icon>
       <h2>{{ sensor.nombre_sensor }}</h2>
       <p>{{ sensor.desc_instrumento }}</p>
     </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+        Presione en los sensores para seleccionar el tipo de reporte que desea ver
+    </ion-card-header>
   </ion-card>
 </ion-content>
