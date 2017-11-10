@@ -18,22 +18,26 @@ export class LoginPage {
     ingresar() {
         //console.log('usuario' + this.usuario + ' - contraseña' + this.contrasenia);
         try {
-            this.usuarioProvider.validar(this.usuario, this.contrasenia);
-            console.log("1 +++++++++++++++++++++++++++++++++++++");
-            console.log(this.usuarioProvider.rpta);
-            console.log("2 +++++++++++++++++++++++++++++++++++++");
-            if (this.usuarioProvider.rpta == 1){
-                this.navCtrl.push(ApplicationPage);
-            }else{
-                let toast = this.toastCtrl.create({
-                    message: 'Usuario y/o Contraseña Incorrectos',
-                    duration: 3000
-                });
-                toast.present();
-            }
+            this.usuarioProvider.validar(this.usuario, this.contrasenia).then((rpta) => {
+                //console.log("rpta : " + rpta);
+                if (rpta == 1){
+                    this.navCtrl.push(ApplicationPage);
+                }else{
+                    let toast = this.toastCtrl.create({
+                        message: 'Usuario y/o Contraseña Incorrectos',
+                        duration: 3000
+                    });
+                    toast.present();
+                }
+            });
         }
         catch (e){
             console.log(e);
+            let toast = this.toastCtrl.create({
+                message: 'Ocurrió un error durante el logeo',
+                duration: 3000
+            });
+            toast.present();
         }
   }
 }

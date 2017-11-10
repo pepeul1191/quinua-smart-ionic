@@ -20,8 +20,6 @@ export class EstacionesPage {
     ionViewDidLoad() {
         //console.log('ionViewDidLoad EstacionesPage');
         try {
-            this.estacionProvider.listar();
-            this.estaciones = this.estacionProvider.rpta;
             this.estacionProvider.listar().then((estaciones) => {
                 this.loadMap(estaciones);
             });
@@ -36,9 +34,6 @@ export class EstacionesPage {
     }
     ionViewDidEnter() {
         try {
-            this.estacionProvider.listar();
-            //console.log("lista_estaciones", this.estacionProvider.rpta);
-            this.estaciones = this.estacionProvider.rpta;
             this.estacionProvider.listar().then((estaciones) => {
                 this.loadMap(estaciones);
             });

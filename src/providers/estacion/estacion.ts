@@ -19,7 +19,7 @@ export class EstacionProvider {
         headers.append("Accept", 'application/json');
         headers.append('Content-Type', 'application/x-www-form-urlencoded' );
         let options = new RequestOptions({ headers: headers });
-        let postParams = {};
+        //let postParams = {};
         var link = BASE_URL + 'estacion/listar';
       
         return new Promise(resolve => {this.http.get(link, options).subscribe(

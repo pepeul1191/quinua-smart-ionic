@@ -23,10 +23,9 @@ export class UsuarioProvider {
         let postParams = {};
         var link = BASE_URL + 'usuario/validar?usuario=' + usuario + '&contrasenia=' + contrasenia;
         
-        this.http.post(link, postParams, options)
-            .subscribe(data => {
-                //console.log(JSON.parse(data['_body']));
-                this.rpta = JSON.parse(data['_body']);
+        return new Promise(resolve => {this.http.post(link, postParams, options).subscribe(
+            data => {
+                resolve(JSON.parse(data['_body']));
             }
             , error => {
                 let toast = this.toastCtrl.create({
@@ -34,6 +33,7 @@ export class UsuarioProvider {
                     duration: 3000
                 });
                 toast.present();
+            });
         });
     }
 }
