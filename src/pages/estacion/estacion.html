@@ -4,12 +4,12 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-card *ngFor="let sensor of sensores;">
-    <ion-card-header>
-      {{ sensor.nombre_sensor }}
-    </ion-card-header>
-    <ion-card-content>
-      {{ sensor.desc_instrumento }}
-    </ion-card-content>
+  <ion-card>
+    <img src="{{ STATIC_URL }}img/Quinoa-Plantation.jpg">
+    <ion-item *ngFor="let sensor of sensores;">
+      <ion-icon name="football" item-start large></ion-icon>
+      <h2>{{ sensor.nombre_sensor }}</h2>
+      <p>{{ sensor.desc_instrumento }}</p>
+    </ion-item>
   </ion-card>
 </ion-content>
