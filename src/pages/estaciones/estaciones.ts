@@ -51,9 +51,23 @@ export class EstacionesPage {
         if(estaciones != null){
             estaciones.forEach(estacion => {
                 var position = new google.maps.LatLng(estacion.latitud, estacion.longitud);
-                var estacionMarker = new google.maps.Marker({position: position, title: estacion.title});
+                var estacionMarker = new google.maps.Marker({position: position, id: estacion.ide_estacion});
+                let content = "<h4>Information!</h4>";   
+                this.addInfoWindow(estacionMarker, content, estacion.ide_estacion);
                 estacionMarker.setMap(this.map);
             });
         }
     }
+
+    addInfoWindow(marker, content, estacion_id){
+        let infoWindow = new google.maps.InfoWindow({
+            content: content
+        });
+        google.maps.event.addListener(marker, 'click', () => {
+            console.log(['ide_estacion', estacion_id]);
+            infoWindow.open(this.map, marker);
+        });
+    }
+    
+    
 }
