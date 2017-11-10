@@ -1,18 +1,15 @@
-<!--
-  Generated template for the EstacionPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
     <ion-title>Sensores de Estación</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-
+  <ion-card *ngFor="let sensor of sensores;">
+    <ion-card-header>
+      {{ sensor.nombre_sensor }}
+    </ion-card-header>
+    <ion-card-content>
+      {{ sensor.desc_instrumento }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
