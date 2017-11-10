@@ -11,27 +11,29 @@ export class EstacionProvider {
     http: any;
     //data: any;
     constructor(http: Http, public toastCtrl: ToastController) {
-      this.http = http;
+        this.http = http;
     }
     listar() {
-      //console.log(usuario);console.log(contrasenia);
-      var headers = new Headers();
-      headers.append("Accept", 'application/json');
-      headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-      let options = new RequestOptions({ headers: headers });
-      let postParams = {};
-      var link = BASE_URL + 'estacion/listar';
+        //console.log(usuario);console.log(contrasenia);
+        var headers = new Headers();
+        headers.append("Accept", 'application/json');
+        headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+        let options = new RequestOptions({ headers: headers });
+        let postParams = {};
+        var link = BASE_URL + 'estacion/listar';
       
-      this.http.get(link, options)
-          .subscribe(data => {
-              this.rpta = JSON.parse(data['_body']);
-          }
-          , error => {
-              let toast = this.toastCtrl.create({
-                  message: 'Ocurrió un error en la comunicación con el servidor',
-                  duration: 3000
-              });
-              toast.present();
-      })
-  }
+        return new Promise(resolve => {this.http.get(link, options).subscribe(
+            data => {
+                this.rpta = JSON.parse(data['_body']);
+                resolve(this.rpta);
+            }, 
+            error => {
+                let toast = this.toastCtrl.create({
+                    message: 'Ocurrió un error en la comunicación con el servidor',
+                    duration: 3000
+                });
+                toast.present();
+            })
+        });
+    }
 }
