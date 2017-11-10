@@ -18,21 +18,12 @@ export class EstacionesPage {
         //this.ionViewDidEnter();
     }
     ionViewDidLoad() {
-        //console.log('ionViewDidLoad EstacionesPage');
-        try {
-            this.estacionProvider.listar().then((estaciones) => {
-                this.loadMap(estaciones);
-            });
-        } catch (e){
-            console.log(e);
-            let toast = this.toastCtrl.create({
-                message: 'Ocurrió un error en listar las estaciones de monitoreo - ionViewDidLoad',
-                duration: 3000
-            });
-            toast.present();
-        } 
+        this.init('ionViewDidLoad') 
     }
     ionViewDidEnter() {
+        this.init('ionViewDidEnter')
+    }
+    init(procedencia){
         try {
             this.estacionProvider.listar().then((estaciones) => {
                 this.loadMap(estaciones);
@@ -40,7 +31,7 @@ export class EstacionesPage {
         } catch (e){
             console.log(e);
             let toast = this.toastCtrl.create({
-                message: 'Ocurrió un error en listar las estaciones de monitoreo - ionViewDidEnter',
+                message: 'Ocurrió un error en listar las estaciones de monitoreo - ' + procedencia,
                 duration: 3000
             });
             toast.present();
@@ -57,8 +48,8 @@ export class EstacionesPage {
     
         this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
         
-        if(this.estaciones != null){
-            this.estaciones.forEach(estacion => {
+        if(estaciones != null){
+            estaciones.forEach(estacion => {
                 var position = new google.maps.LatLng(estacion.latitud, estacion.longitud);
                 var estacionMarker = new google.maps.Marker({position: position, title: estacion.title});
                 estacionMarker.setMap(this.map);

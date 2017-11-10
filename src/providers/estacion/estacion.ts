@@ -24,8 +24,8 @@ export class EstacionProvider {
       
         return new Promise(resolve => {this.http.get(link, options).subscribe(
             data => {
-                this.rpta = JSON.parse(data['_body']);
-                resolve(this.rpta);
+                console.log(['estaciones', JSON.parse(data['_body'])]);
+                resolve(JSON.parse(data['_body']));
             }, 
             error => {
                 let toast = this.toastCtrl.create({
