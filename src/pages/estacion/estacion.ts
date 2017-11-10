@@ -1,21 +1,17 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the EstacionPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-estacion',
   templateUrl: 'estacion.html',
 })
 export class EstacionPage {
+  public sensores;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+      this.sensores = navParams.get('sensores');
+      console.log(['pages/estaciones', this.sensores]);
   }
 
   ionViewDidLoad() {

@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EstacionProvider } from '../../providers/estacion/estacion';
 import { ToastController } from 'ionic-angular';
+import { EstacionPage } from '../../pages/estacion/estacion';
 import 'rxjs/add/operator/map';
 declare var google;
 
@@ -29,7 +30,7 @@ export class EstacionesPage {
                 this.loadMap(estaciones);
             });
         } catch (e){
-            console.log(e);
+            //console.log(e);
             let toast = this.toastCtrl.create({
                 message: 'Ocurrió un error en listar las estaciones de monitoreo - ' + procedencia,
                 duration: 3000
@@ -68,10 +69,11 @@ export class EstacionesPage {
             //infoWindow.open(this.map, marker
             try {
                 this.estacionProvider.detalle(estacion_id).then((sensores) => {
-                    console.log(sensores);
+                    //console.log(sensores);
+                    this.navCtrl.push(EstacionPage, {sensores : sensores});
                 });
             } catch (e){
-                console.log(e);
+                //console.log(e);
                 let toast = this.toastCtrl.create({
                     message: 'Ocurrió un error en mostrar los sensores de laestaciones de monitoreo',
                     duration: 3000

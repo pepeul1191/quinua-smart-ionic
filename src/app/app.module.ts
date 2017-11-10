@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { ApplicationPage } from '../pages/application/application';
+import { EstacionPage } from '../pages/estacion/estacion';
 
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { EstacionProvider } from '../providers/estacion/estacion';
@@ -19,7 +20,8 @@ import { EstacionProvider } from '../providers/estacion/estacion';
     MyApp,
     HomePage,
     LoginPage,
-    ApplicationPage
+    ApplicationPage,
+    EstacionPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { EstacionProvider } from '../providers/estacion/estacion';
     MyApp,
     LoginPage,
     HomePage,
-    ApplicationPage
+    ApplicationPage,
+    EstacionPage
   ],
   providers: [
     StatusBar,

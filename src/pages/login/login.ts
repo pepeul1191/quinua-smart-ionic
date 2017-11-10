@@ -32,7 +32,7 @@ export class LoginPage {
             });
         }
         catch (e){
-            console.log(e);
+            //console.log(e);
             let toast = this.toastCtrl.create({
                 message: 'Ocurrió un error durante el logeo',
                 duration: 3000
