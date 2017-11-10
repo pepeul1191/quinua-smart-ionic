@@ -7,7 +7,7 @@
   <ion-card>
     <img src="{{ STATIC_URL }}img/Quinoa-Plantation.jpg">
     <ion-item *ngFor="let sensor of sensores;">
-      <ion-icon name="sensor-humedad" item-start large></ion-icon>
+      <ion-icon name="{{ sensor.icon }}" item-start large></ion-icon>
       <h2>{{ sensor.nombre_sensor }}</h2>
       <p>{{ sensor.desc_instrumento }}</p>
     </ion-item>
