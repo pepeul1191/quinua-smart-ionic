@@ -1,1 +1,1 @@
-export var BASE_URL:string = 'http://10.151.121.97:3000/';
+export var BASE_URL:string = 'http://10.151.77.52:3000/';

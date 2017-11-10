@@ -64,10 +64,20 @@ export class EstacionesPage {
             content: content
         });
         google.maps.event.addListener(marker, 'click', () => {
-            console.log(['ide_estacion', estacion_id]);
-            infoWindow.open(this.map, marker);
+            //console.log(['ide_estacion', estacion_id]);
+            //infoWindow.open(this.map, marker
+            try {
+                this.estacionProvider.detalle(estacion_id).then((sensores) => {
+                    console.log(sensores);
+                });
+            } catch (e){
+                console.log(e);
+                let toast = this.toastCtrl.create({
+                    message: 'Ocurrió un error en mostrar los sensores de laestaciones de monitoreo',
+                    duration: 3000
+                });
+                toast.present();
+            } 
         });
     }
-    
-    
 }

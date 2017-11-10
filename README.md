@@ -34,3 +34,7 @@ Arrancar aplicación en Android
 Generar resources:
 
     $ ionic cordova resources android
+
+Generar Page:
+
+    $ ionic generate page <nombre_page>
