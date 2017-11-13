@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import {STATIC_URL} from "../../app/data";
-import { ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -12,7 +11,7 @@ export class EstacionPage {
   public sensores;
   public STATIC_URL;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController) {
       var sensores = navParams.get('sensores');
       this.STATIC_URL = STATIC_URL;
       this.sensores = [];
@@ -40,21 +39,33 @@ export class EstacionPage {
   }
   mostrar_opciones(estacion_id) {
         //console.log('usuario' + this.usuario + ' - contraseña' + this.contrasenia);
-        try {
-            let toast = this.toastCtrl.create({
-                message: 'estacion_id' + estacion_id,
-                duration: 3000
-            });
-            toast.present();
-        }
-        catch (e){
-            //console.log(e);
-            let toast = this.toastCtrl.create({
-                message: 'Ocurrió un error durante el logeo',
-                duration: 3000
-            });
-            toast.present();
-        }
+        let actionSheet = this.actionSheetCtrl.create({
+            title: 'Seleccione un tipo de reporte',
+            buttons: [
+                {
+                    text: 'Destructive',
+                    role: 'destructive',
+                    handler: () => {
+                    
+                    }
+                },
+                {
+                    text: 'Archive',
+                    handler: () => {
+                    
+                    }
+                },
+                {
+                    text: 'Cancelar',
+                    role: 'cancel',
+                    handler: () => {
+                    
+                    }
+                }
+            ]
+        });
+
+        actionSheet.present();
   }
 
 }
