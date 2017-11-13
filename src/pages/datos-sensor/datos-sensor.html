@@ -23,6 +23,7 @@
     <ion-label>Fecha Fin - DD/MM/AAAA</ion-label>
     <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="fecha_fin"></ion-datetime>
   </ion-item>
+  <!--
   <ion-item>
     <ion-label>Hora Inicio - </ion-label>
     <ion-datetime displayFormat="A mm" [(ngModel)]="hora_inicio"></ion-datetime>
@@ -31,9 +32,10 @@
     <ion-label>Hora Fin - </ion-label>
     <ion-datetime displayFormat="A mm" [(ngModel)]="hora_fin"></ion-datetime>
   </ion-item>
+  -->
   <ion-item>
-    <button ion-button full>Mostrar Resultados en Tabla</button>
-    <button ion-button full>Mostrar Resultados en Gráfica</button>
+    <button ion-button full (click)='reporte("tabla");'>Mostrar Resultados en Tabla</button>
+    <button ion-button full (click)='reporte("grafica");'>Mostrar Resultados en Gráfica</button>
   </ion-item>
   <br><hr><br>
 </ion-content>

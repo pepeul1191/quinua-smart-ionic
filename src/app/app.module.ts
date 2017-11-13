@@ -15,6 +15,7 @@ import { DatosSensorPage } from '../pages/datos-sensor/datos-sensor';
 
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { EstacionProvider } from '../providers/estacion/estacion';
+import { SensorProvider } from '../providers/sensor/sensor';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { EstacionProvider } from '../providers/estacion/estacion';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsuarioProvider,
     EstacionProvider,
+    SensorProvider,
   ]
 })
 export class AppModule {}
