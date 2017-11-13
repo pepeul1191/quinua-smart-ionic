@@ -8,7 +8,7 @@
     <img src="{{ STATIC_URL }}img/Quinoa-Plantation.jpg">
   </ion-card>
   <ion-card *ngFor="let sensor of sensores;">
-    <ion-item>
+    <ion-item (click)='mostrar_opciones(sensor.ide_sensor);'>
       <ion-icon name="{{ sensor.icon }}" item-start large></ion-icon>
       <h2>{{ sensor.nombre_sensor }}</h2>
       <p>{{ sensor.desc_instrumento }}</p>

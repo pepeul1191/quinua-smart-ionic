@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {STATIC_URL} from "../../app/data";
+import { ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -11,7 +12,7 @@ export class EstacionPage {
   public sensores;
   public STATIC_URL;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
       var sensores = navParams.get('sensores');
       this.STATIC_URL = STATIC_URL;
       this.sensores = [];
@@ -36,6 +37,24 @@ export class EstacionPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EstacionPage');
+  }
+  mostrar_opciones(estacion_id) {
+        //console.log('usuario' + this.usuario + ' - contraseña' + this.contrasenia);
+        try {
+            let toast = this.toastCtrl.create({
+                message: 'estacion_id' + estacion_id,
+                duration: 3000
+            });
+            toast.present();
+        }
+        catch (e){
+            //console.log(e);
+            let toast = this.toastCtrl.create({
+                message: 'Ocurrió un error durante el logeo',
+                duration: 3000
+            });
+            toast.present();
+        }
   }
 
 }
