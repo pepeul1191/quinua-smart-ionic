@@ -38,3 +38,7 @@ Generar resources:
 Generar Page:
 
     $ ionic generate page <nombre_page>
+
+Generar Provider:
+
+    $ ionic generate provider <nombre_provider>

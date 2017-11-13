@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { ApplicationPage } from '../pages/application/application';
 import { EstacionPage } from '../pages/estacion/estacion';
+import { DatosSensorPage } from '../pages/datos-sensor/datos-sensor';
 
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { EstacionProvider } from '../providers/estacion/estacion';
@@ -21,7 +22,8 @@ import { EstacionProvider } from '../providers/estacion/estacion';
     HomePage,
     LoginPage,
     ApplicationPage,
-    EstacionPage
+    EstacionPage,
+    DatosSensorPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { EstacionProvider } from '../providers/estacion/estacion';
     LoginPage,
     HomePage,
     ApplicationPage,
-    EstacionPage
+    EstacionPage,
+    DatosSensorPage
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
-import {STATIC_URL} from "../../app/data";
+import { STATIC_URL } from "../../app/data";
+import { DatosSensorPage } from '../../pages/datos-sensor/datos-sensor';
 
 @IonicPage()
 @Component({
@@ -38,21 +39,31 @@ export class EstacionPage {
     console.log('ionViewDidLoad EstacionPage');
   }
   mostrar_opciones(estacion_id) {
-        //console.log('usuario' + this.usuario + ' - contraseña' + this.contrasenia);
         let actionSheet = this.actionSheetCtrl.create({
             title: 'Seleccione un tipo de reporte',
             buttons: [
                 {
-                    text: 'Destructive',
-                    role: 'destructive',
+                    text: 'Promedio por día en rango de fechas',
                     handler: () => {
-                    
+                        this.navCtrl.push(DatosSensorPage, {estacion_id : estacion_id, reporte_id: 1});
                     }
                 },
                 {
-                    text: 'Archive',
+                    text: 'Máximo y minimo en rango de fechas',
                     handler: () => {
-                    
+                        this.navCtrl.push(DatosSensorPage, {estacion_id : estacion_id, reporte_id: 2});
+                    }
+                },
+                {
+                    text: 'Máximo, minimo y promedio en rango de fechas',
+                    handler: () => {
+                        this.navCtrl.push(DatosSensorPage, {estacion_id : estacion_id, reporte_id: 3});
+                    }
+                },
+                {
+                    text: 'Mediciones por rango de tiempo de un día',
+                    handler: () => {
+                        this.navCtrl.push(DatosSensorPage, {estacion_id : estacion_id, reporte_id: 4});
                     }
                 },
                 {
