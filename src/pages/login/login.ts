@@ -19,7 +19,7 @@ export class LoginPage {
         //console.log('usuario' + this.usuario + ' - contraseña' + this.contrasenia);
         try {
             this.usuarioProvider.validar(this.usuario, this.contrasenia).then((rpta) => {
-                //console.log("rpta : " + rpta);
+                console.log("rpta : " + rpta);
                 if (rpta == 1){
                     this.navCtrl.push(ApplicationPage);
                 }else{
@@ -32,7 +32,7 @@ export class LoginPage {
             });
         }
         catch (e){
-            //console.log(e);
+            console.log(e);
             let toast = this.toastCtrl.create({
                 message: 'Ocurrió un error durante el logeo',
                 duration: 3000
