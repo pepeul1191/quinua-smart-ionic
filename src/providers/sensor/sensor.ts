@@ -12,14 +12,14 @@ export class SensorProvider {
   constructor(http: Http, public toastCtrl: ToastController) {
     this.http = http;
   }
-  obtener_datos(sensor_id, fecha_inicio, fecha_fin) {
+  obtener_datos(sensor_id, reporte_url, fecha_inicio, fecha_fin) {
         //console.log(usuario);console.log(contrasenia);
         var headers = new Headers();
         headers.append("Accept", 'application/json');
         headers.append('Content-Type', 'application/x-www-form-urlencoded' );
         let options = new RequestOptions({ headers: headers });
         //let postParams = {};
-        var link = BASE_URL + 'sensor/datos?sensor_id=' + sensor_id + '&fecha_inicio=' + fecha_inicio + '&fecha_fin=' + fecha_fin;
+        var link = BASE_URL + reporte_url + '?sensor_id=' + sensor_id + '&fecha_inicio=' + fecha_inicio + '&fecha_fin=' + fecha_fin;
       
         return new Promise(resolve => {this.http.get(link, options).subscribe(
             data => {

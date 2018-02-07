@@ -4,15 +4,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
-//import { ApplicationPage } from '../pages/application/application';
-import { LoginPage } from '../pages/login/login';
+import { ApplicationPage } from '../pages/application/application';
+//import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  //rootPage:any = ApplicationPage;
-  rootPage:any = LoginPage;
+  rootPage:any = ApplicationPage;
+  //rootPage:any = LoginPage;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private sqlite: SQLite) {
     platform.ready().then(() => {
       //INICIO : Database CREATE TABLES IF NOT EXIST

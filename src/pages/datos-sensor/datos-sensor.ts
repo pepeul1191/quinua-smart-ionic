@@ -13,15 +13,17 @@ export class DatosSensorPage {
   public info_vista;
   fecha_inicio:any;
   fecha_fin:any;
-  estacion_id:any;
-  reporte_id:any;  
+  sensor_id:any;
+  reporte_id:any;
+  reporte_url:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public sensorProvider: SensorProvider) {
-    this.estacion_id = navParams.get('estacion_id');
+    this.sensor_id = navParams.get('sensor_id');
     this.reporte_id = navParams.get('reporte_id');
     reporte_sensor.forEach(dato_vista => {
       if(dato_vista.id == this.reporte_id){
         this.info_vista = dato_vista;
+        this.reporte_url = dato_vista.url;
       }
     });
   }
@@ -32,7 +34,7 @@ export class DatosSensorPage {
 
   reporte(tipo) {
         try {
-            this.sensorProvider.obtener_datos(this.estacion_id, this.fecha_inicio, this.fecha_fin).then((rpta) => {
+            this.sensorProvider.obtener_datos(this.sensor_id, this.reporte_url, this.fecha_inicio, this.fecha_fin).then((rpta) => {
                 console.log("rpta : " + rpta);
             });
         }

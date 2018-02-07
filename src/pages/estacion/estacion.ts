@@ -38,32 +38,32 @@ export class EstacionPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad EstacionPage');
   }
-  mostrar_opciones(estacion_id) {
+  mostrar_opciones(sensor_id) {
         let actionSheet = this.actionSheetCtrl.create({
             title: 'Seleccione un tipo de reporte',
             buttons: [
                 {
                     text: 'Promedio por día en rango de fechas',
                     handler: () => {
-                        this.navCtrl.push(DatosSensorPage, {estacion_id : estacion_id, reporte_id: 1});
+                        this.navCtrl.push(DatosSensorPage, {sensor_id : sensor_id, reporte_id: 1});
                     }
                 },
                 {
                     text: 'Máximo y minimo en rango de fechas',
                     handler: () => {
-                        this.navCtrl.push(DatosSensorPage, {estacion_id : estacion_id, reporte_id: 2});
+                        this.navCtrl.push(DatosSensorPage, {sensor_id : sensor_id, reporte_id: 2});
                     }
                 },
                 {
                     text: 'Máximo, minimo y promedio en rango de fechas',
                     handler: () => {
-                        this.navCtrl.push(DatosSensorPage, {estacion_id : estacion_id, reporte_id: 3});
+                        this.navCtrl.push(DatosSensorPage, {sensor_id : sensor_id, reporte_id: 3});
                     }
                 },
                 {
                     text: 'Mediciones por rango de tiempo de un día',
                     handler: () => {
-                        this.navCtrl.push(DatosSensorPage, {estacion_id : estacion_id, reporte_id: 4});
+                        this.navCtrl.push(DatosSensorPage, {sensor_id : sensor_id, reporte_id: 4});
                     }
                 },
                 {
