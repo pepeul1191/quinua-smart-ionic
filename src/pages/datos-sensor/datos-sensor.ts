@@ -4,6 +4,7 @@ import { reporte_sensor } from "../../app/data";
 import { ToastController } from 'ionic-angular';
 import { SensorProvider } from '../../providers/sensor/sensor';
 import { Chart } from 'chart.js';
+import { DATASETS } from "../../app/data";
 
 @IonicPage()
 @Component({
@@ -13,6 +14,7 @@ import { Chart } from 'chart.js';
 export class DatosSensorPage {
   @ViewChild('reporteCanvas') reporteCanvas;
   public info_vista;
+  public DATASETS;
   fecha_inicio:any;
   fecha_fin:any;
   sensor_id:any;
@@ -23,6 +25,7 @@ export class DatosSensorPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public sensorProvider: SensorProvider) {
     this.sensor_id = navParams.get('sensor_id');
     this.reporte_id = navParams.get('reporte_id');
+    this.DATASETS = DATASETS;
     reporte_sensor.forEach(dato_vista => {
       if(dato_vista.id == this.reporte_id){
         this.info_vista = dato_vista;
@@ -38,84 +41,53 @@ export class DatosSensorPage {
   reporte(tipo) {
     try {
       this.sensorProvider.obtener_datos(this.sensor_id, this.reporte_url, this.fecha_inicio, this.fecha_fin).then((data) => {
-        var data_chart = [];
         var axis_x = [];
         var data_max = [];
         var data_min = [];
         var data_avg = [];
-        console.log(data);
+        var dataset = null;
+        var functionDataset = null;
+        console.log(this.DATASETS);
         if(data instanceof Array){
-          for (let entry of data) {
-            //data_chart.push(entry['dato']);
-            axis_x.push(entry['dia']);
-            data_max.push(entry['maximo']);
-            data_min.push(entry['minimo']);
-            data_avg.push(entry['promedio']);
+          if(this.reporte_url == 'sensor/promedio_rango_fechas'){
+            for (let entry of data) {
+              axis_x.push(entry['dia']);
+              data_avg.push(entry['promedio']);
+            }
+            functionDataset = this.DATASETS[this.reporte_url];
+            dataset = functionDataset(data_avg);
+          }
+          if(this.reporte_url == 'sensor/maximo_minimo_rango_fechas'){
+            for (let entry of data) {
+              axis_x.push(entry['dia']);
+              data_max.push(entry['maximo']);
+              data_min.push(entry['minimo']);
+            }
+            functionDataset = this.DATASETS[this.reporte_url];
+            dataset = functionDataset(data_max, data_min);
+          }
+          if(this.reporte_url == 'sensor/maximo_minimo_promedio_rango_fechas'){
+            for (let entry of data) {
+              axis_x.push(entry['dia']);
+              data_max.push(entry['maximo']);
+              data_min.push(entry['minimo']);
+              data_avg.push(entry['promedio']);
+            }
+            functionDataset = this.DATASETS[this.reporte_url];
+            dataset = functionDataset(data_max, data_min, data_avg);
+          }
+          if(this.reporte_url == 'sensor/rango_tiempo_dia'){
+            for (let entry of data) {
+              //TODO              
+            }
           }
         }
+        console.log(dataset);
         this.reporteGrafica = new Chart(this.reporteCanvas.nativeElement, {
           type: 'bar',
           data: {
             labels: axis_x,
-            datasets: [
-              {
-                label: "Máximo",
-                data: data_max,
-                backgroundColor: [
-                  "rgba(10,20,30,0.3)",
-                  "rgba(10,20,30,0.3)",
-                  "rgba(10,20,30,0.3)",
-                  "rgba(10,20,30,0.3)",
-                  "rgba(10,20,30,0.3)"
-                ],
-                borderColor: [
-                  "rgba(10,20,30,1)",
-                  "rgba(10,20,30,1)",
-                  "rgba(10,20,30,1)",
-                  "rgba(10,20,30,1)",
-                  "rgba(10,20,30,1)"
-                ],
-                borderWidth: 1
-              },
-              {
-                label: "Mínimo",
-                data: data_min,
-                backgroundColor: [
-                  "rgba(50,150,200,0.3)",
-                  "rgba(50,150,200,0.3)",
-                  "rgba(50,150,200,0.3)",
-                  "rgba(50,150,200,0.3)",
-                  "rgba(50,150,200,0.3)"
-                ],
-                borderColor: [
-                  "rgba(50,150,200,1)",
-                  "rgba(50,150,200,1)",
-                  "rgba(50,150,200,1)",
-                  "rgba(50,150,200,1)",
-                  "rgba(50,150,200,1)"
-                ],
-                borderWidth: 1
-              },
-              {
-                label: "Promedio",
-                data: data_avg,
-                backgroundColor: [
-                  "rgba(50,150,100,0.3)",
-                  "rgba(50,150,100,0.3)",
-                  "rgba(50,150,100,0.3)",
-                  "rgba(50,150,100,0.3)",
-                  "rgba(50,150,100,0.3)"
-                ],
-                borderColor: [
-                  "rgba(50,150,100,1)",
-                  "rgba(50,150,100,1)",
-                  "rgba(50,150,100,1)",
-                  "rgba(50,150,100,1)",
-                  "rgba(50,150,100,1)"
-                ],
-                borderWidth: 1
-              }
-            ]
+            datasets: dataset
           },
           options: {
             scales: {
