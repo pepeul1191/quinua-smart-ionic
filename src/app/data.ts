@@ -118,7 +118,20 @@ export var DATASETS:any  =
           }
         ]
       },
-      'sensor/rango_tiempo_dia': 'TODO'
+      'sensor/rango_tiempo_dia': function(data_chart){
+        return [
+          {
+            label: "Datos de un día",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: data_chart
+          },
+        ]
+      }
     }
 ;
   
