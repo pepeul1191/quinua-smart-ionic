@@ -15,28 +15,28 @@
 
 <ion-content padding>
   <h5>{{ info_vista.nombre }}</h5>
-  <ion-item>
+  <ion-item [hidden]='!([1,2,3].indexOf(reporte_id) != -1)'>
     <ion-label>Fecha Inicio - DD/MM/AAAA</ion-label>
     <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="fecha_inicio"></ion-datetime>
   </ion-item>
-  <ion-item>
+  <ion-item [hidden]='!([1,2,3].indexOf(reporte_id) != -1)'>
     <ion-label>Fecha Fin - DD/MM/AAAA</ion-label>
     <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="fecha_fin"></ion-datetime>
   </ion-item>
-  <!--
-  <ion-item>
-    <ion-label>Hora Inicio - </ion-label>
-    <ion-datetime displayFormat="A mm" [(ngModel)]="hora_inicio"></ion-datetime>
+  <ion-item [hidden]='!([4].indexOf(reporte_id) != -1)'>
+    <ion-label>Hora Inicio - HH:mm</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="hora_inicio"></ion-datetime>
+  </ion-item>
+  <ion-item [hidden]='!([4].indexOf(reporte_id) != -1)'>
+    <ion-label>Hora Fin - HH:mm</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="hora_fin"></ion-datetime>
   </ion-item>
   <ion-item>
-    <ion-label>Hora Fin - </ion-label>
-    <ion-datetime displayFormat="A mm" [(ngModel)]="hora_fin"></ion-datetime>
-  </ion-item>
-  -->
-  <ion-item>
-    <button ion-button full (click)='reporte("tabla");'>Mostrar Resultados en Tabla</button>
+    <!--<button ion-button full (click)='reporte("tabla");'>Mostrar Resultados en Tabla</button>-->
     <button ion-button full (click)='reporte("grafica");'>Mostrar Resultados en Gráfica</button>
   </ion-item>
   <br><hr><br>
   <canvas #reporteCanvas></canvas>
+  <div class="row header" id="#reporteTablaHeader"></div>
+  <div class="row" id="#reporteTablaBoby" ng-repeat="data in ctrl.data"></div>
 </ion-content>
